@@ -33,6 +33,9 @@ namespace BioRec___MarketPlace.Models
         [InverseProperty("Direccion")]
         public virtual Usuario Usuario { get; set; }
 
+        [InverseProperty("Direccion")]
+        public virtual Proveedor Proveedor { get; set; }
+
 
         [ForeignKey("CiudadDepPais")]
         public int idCiudadDepPais { get; set; }

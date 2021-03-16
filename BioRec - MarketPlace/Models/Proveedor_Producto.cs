@@ -13,6 +13,12 @@ namespace BioRec___MarketPlace.Models
     {
         [Key]
         public int idProveedor_Producto { get; set; }
+        [Required]
+        public DateTime fecha { get; set; }
+        [Required]
+        public int cantidadTotal { get; set; }
+        [Required]
+        public int costoPorUnidad { get; set; }
 
         [ForeignKey("Producto")]
         public int idProducto { get; set; }

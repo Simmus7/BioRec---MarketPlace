@@ -12,5 +12,19 @@ namespace BioRec___MarketPlace.Models
     {
         [Key]
         public int idProveedor { get; set; }
+        [Required]
+        public String nombreProveedor { get; set; }
+        [Required]
+        public String direccionBodega { get; set; }
+        [ForeignKey("Direccion")]
+        public int idDireccion { get; set; }
+        public virtual Direccion Direccion { get; set; }
+
+        [InverseProperty("Proveedor")]
+        public virtual Telefono Telefono { get; set; }
+
+        [InverseProperty("Proveedor")]
+        public virtual ICollection<Proveedor_Producto> Proveedor_Producto { get; set; }
+
     }
 }
