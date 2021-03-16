@@ -152,18 +152,20 @@
                 var pais = $("#pais").val();
                 
                 
-                var json = '{"Usuario":{"nombre":"' + nombre + '","apellido":"' + apellido + '","correo":"' + correo + '","contraseña":"'
+                var json = '{"usuarioCompuesto":{"Usuario":{"nombre":"' + nombre + '","apellido":"' + apellido + '","correo":"' + correo + '","contraseña":"'
                     + contraseña + '","fechanacimiento":"' + fechanacimiento + '"},'
                     + '"Direccion":{"tipoVia":"' + tipoVia + '","numeroVia":"' + numeroVia + '","numeroViaSecundario":"' + numeroViaSecundario + '","numeroCasa":"'
                     + numeroCasa + '","tipoInmueble":"' + tipoInmueble + '"},' + '"Ciudad":{"ciudad":"' + ciudad + '"},' + '"Departamento":{"departamento":"' + departamento + '"},'
-                    +'"Pais":{"pais":"' + pais + '"}}';
+                    +'"Pais":{"pais":"' + pais + '"}}}';
 
                 console.log(json);
+                var obc = JSON.parse(json);
+                console.log(obc);
 
 
                 $.ajax({
                     type: 'POST',
-                    data: JSON.stringify(json),
+                    data: JSON.parse(json),
                     dataType: 'json',
                     contentType: "application/json; charset=utf-8",
                     url: "/Usuario/Registrar/",

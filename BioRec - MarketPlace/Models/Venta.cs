@@ -20,7 +20,8 @@ namespace BioRec___MarketPlace.Models
         public int idUsuario { get; set; }
         public virtual Usuario Usuario { get; set; }
 
-       
+        [InverseProperty("Venta")]
+        public virtual ICollection<Producto_Venta> Producto_Ventas { get; set; }
 
     }
 }

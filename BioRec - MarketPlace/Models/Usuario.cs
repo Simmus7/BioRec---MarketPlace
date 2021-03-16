@@ -36,14 +36,20 @@ namespace BioRec___MarketPlace.Models
         [Required]
         public int rol { get; set; }
 
-        [InverseProperty("Usuario")]
-        public virtual ICollection<Venta> Ventas { get; set; }
+        
+
+       
 
         [ForeignKey("Direccion")]
         public int idDireccion { get; set; }
         public virtual Direccion Direccion { get; set; }
 
-        }
+        [InverseProperty("Usuario")]
+        public virtual ICollection<Venta> Ventas { get; set; }
+
+
+
+    }
 
 
 

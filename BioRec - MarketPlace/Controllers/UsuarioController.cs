@@ -28,7 +28,6 @@ namespace BioRec___MarketPlace.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registrar(RegistroUsuarioViewModel usuarioCompuesto)
         {
             if (ModelState.IsValid)
