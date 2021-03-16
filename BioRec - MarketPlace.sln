@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioRec - MarketPlace", "BioRec - MarketPlace\BioRec - MarketPlace.csproj", "{7B8054C1-9C47-4F9A-80CE-8A7148652474}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B8054C1-9C47-4F9A-80CE-8A7148652474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8054C1-9C47-4F9A-80CE-8A7148652474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8054C1-9C47-4F9A-80CE-8A7148652474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8054C1-9C47-4F9A-80CE-8A7148652474}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94FCDD60-DD6F-4DDC-AD27-DDEE089159FA}
+	EndGlobalSection
+EndGlobal
