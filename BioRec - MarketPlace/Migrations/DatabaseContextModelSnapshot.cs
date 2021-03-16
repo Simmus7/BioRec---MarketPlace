@@ -65,26 +65,26 @@ namespace BioRec___MarketPlace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("NumeroCasa")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumeroInmueble")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NumeroVia")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("NumeroViaSecundario")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TipoInmueble")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<int>("idCiudadDepPais")
                         .HasColumnType("int");
+
+                    b.Property<int>("numeroCasa")
+                        .HasColumnType("int");
+
+                    b.Property<int>("numeroInmueble")
+                        .HasColumnType("int");
+
+                    b.Property<string>("numeroVia")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("numeroViaSecundario")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("tipoInmueble")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("tipoVia")
                         .IsRequired()
@@ -111,6 +111,130 @@ namespace BioRec___MarketPlace.Migrations
                     b.HasKey("idPais");
 
                     b.ToTable("Pais");
+                });
+
+            modelBuilder.Entity("BioRec___MarketPlace.Models.Producto", b =>
+                {
+                    b.Property<int>("idProducto")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("cantidadTotal")
+                        .HasColumnType("int");
+
+                    b.Property<string>("descripcion")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("idProducto");
+
+                    b.ToTable("Producto");
+                });
+
+            modelBuilder.Entity("BioRec___MarketPlace.Models.Producto_Venta", b =>
+                {
+                    b.Property<int>("idProducto_Venta")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("cantidadProducto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idProducto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idVenta")
+                        .HasColumnType("int");
+
+                    b.Property<int>("precioTotalProducto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("precioUnidad")
+                        .HasColumnType("int");
+
+                    b.HasKey("idProducto_Venta");
+
+                    b.HasIndex("idProducto");
+
+                    b.HasIndex("idVenta");
+
+                    b.ToTable("Producto_Venta");
+                });
+
+            modelBuilder.Entity("BioRec___MarketPlace.Models.Proveedor", b =>
+                {
+                    b.Property<int>("idProveedor")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("direccionBodega")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("idDireccion")
+                        .HasColumnType("int");
+
+                    b.Property<string>("nombreProveedor")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("idProveedor");
+
+                    b.HasIndex("idDireccion")
+                        .IsUnique();
+
+                    b.ToTable("Proveedor");
+                });
+
+            modelBuilder.Entity("BioRec___MarketPlace.Models.Proveedor_Producto", b =>
+                {
+                    b.Property<int>("idProveedor_Producto")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("cantidadTotal")
+                        .HasColumnType("int");
+
+                    b.Property<int>("costoPorUnidad")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("fecha")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("idProducto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idProveedor")
+                        .HasColumnType("int");
+
+                    b.HasKey("idProveedor_Producto");
+
+                    b.HasIndex("idProducto");
+
+                    b.HasIndex("idProveedor");
+
+                    b.ToTable("Proveedor_Producto");
+                });
+
+            modelBuilder.Entity("BioRec___MarketPlace.Models.Telefono", b =>
+                {
+                    b.Property<int>("idTelefono")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("idProveedor")
+                        .HasColumnType("int");
+
+                    b.HasKey("idTelefono");
+
+                    b.HasIndex("idProveedor")
+                        .IsUnique();
+
+                    b.ToTable("Telefono");
                 });
 
             modelBuilder.Entity("BioRec___MarketPlace.Models.Usuario", b =>
@@ -197,6 +321,54 @@ namespace BioRec___MarketPlace.Migrations
                     b.HasOne("BioRec___MarketPlace.Models.CiudadDepPais", "CiudadDepPais")
                         .WithOne("Direccion")
                         .HasForeignKey("BioRec___MarketPlace.Models.Direccion", "idCiudadDepPais")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BioRec___MarketPlace.Models.Producto_Venta", b =>
+                {
+                    b.HasOne("BioRec___MarketPlace.Models.Producto", "Producto")
+                        .WithMany("Producto_Ventas")
+                        .HasForeignKey("idProducto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BioRec___MarketPlace.Models.Venta", "Venta")
+                        .WithMany("Producto_Ventas")
+                        .HasForeignKey("idVenta")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BioRec___MarketPlace.Models.Proveedor", b =>
+                {
+                    b.HasOne("BioRec___MarketPlace.Models.Direccion", "Direccion")
+                        .WithOne("Proveedor")
+                        .HasForeignKey("BioRec___MarketPlace.Models.Proveedor", "idDireccion")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BioRec___MarketPlace.Models.Proveedor_Producto", b =>
+                {
+                    b.HasOne("BioRec___MarketPlace.Models.Producto", "Producto")
+                        .WithMany("Proveedor_Producto")
+                        .HasForeignKey("idProducto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BioRec___MarketPlace.Models.Proveedor", "Proveedor")
+                        .WithMany("Proveedor_Producto")
+                        .HasForeignKey("idProveedor")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BioRec___MarketPlace.Models.Telefono", b =>
+                {
+                    b.HasOne("BioRec___MarketPlace.Models.Proveedor", "Proveedor")
+                        .WithOne("Telefono")
+                        .HasForeignKey("BioRec___MarketPlace.Models.Telefono", "idProveedor")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -17,21 +17,24 @@ namespace BioRec___MarketPlace.Models
         public String tipoVia { get; set; }
 
         [Required]
-        public String NumeroVia { get; set; }
+        public String numeroVia { get; set; }
 
         [Required]
-        public String NumeroViaSecundario{ get; set; }
+        public String numeroViaSecundario{ get; set; }
 
         [Required]
-        public int NumeroCasa { get; set; }
+        public int numeroCasa { get; set; }
 
         [Required]
-        public String TipoInmueble { get; set; }
+        public String tipoInmueble { get; set; }
 
-        public int NumeroInmueble { get; set; }
+        public int numeroInmueble { get; set; }
 
         [InverseProperty("Direccion")]
         public virtual Usuario Usuario { get; set; }
+
+        [InverseProperty("Direccion")]
+        public virtual Proveedor Proveedor { get; set; }
 
 
         [ForeignKey("CiudadDepPais")]
