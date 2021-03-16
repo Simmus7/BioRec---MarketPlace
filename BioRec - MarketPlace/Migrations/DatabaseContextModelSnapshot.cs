@@ -65,26 +65,26 @@ namespace BioRec___MarketPlace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("NumeroCasa")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumeroInmueble")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NumeroVia")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("NumeroViaSecundario")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TipoInmueble")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<int>("idCiudadDepPais")
                         .HasColumnType("int");
+
+                    b.Property<int>("numeroCasa")
+                        .HasColumnType("int");
+
+                    b.Property<int>("numeroInmueble")
+                        .HasColumnType("int");
+
+                    b.Property<string>("numeroVia")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("numeroViaSecundario")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("tipoInmueble")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("tipoVia")
                         .IsRequired()

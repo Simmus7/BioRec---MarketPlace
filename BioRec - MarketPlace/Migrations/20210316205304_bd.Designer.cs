@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BioRec___MarketPlace.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210316193752_BDCompleta")]
-    partial class BDCompleta
+    [Migration("20210316205304_bd")]
+    partial class bd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,26 +67,26 @@ namespace BioRec___MarketPlace.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("NumeroCasa")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumeroInmueble")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NumeroVia")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("NumeroViaSecundario")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TipoInmueble")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<int>("idCiudadDepPais")
                         .HasColumnType("int");
+
+                    b.Property<int>("numeroCasa")
+                        .HasColumnType("int");
+
+                    b.Property<int>("numeroInmueble")
+                        .HasColumnType("int");
+
+                    b.Property<string>("numeroVia")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("numeroViaSecundario")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("tipoInmueble")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("tipoVia")
                         .IsRequired()

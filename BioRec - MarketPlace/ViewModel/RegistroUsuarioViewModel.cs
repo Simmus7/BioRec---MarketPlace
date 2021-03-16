@@ -8,12 +8,48 @@ namespace BioRec___MarketPlace.ViewModel
 {
     public class RegistroUsuarioViewModel
     {
-        public Usuario Usuario { get; set; }
-        public Direccion Direccion {get; set; }
-        public CiudadDepPais Ciudad { get; set; }
-        public Departamento Departamento { get; set; }
-        public Pais Pais { get; set; }
+        public String nombre { get; set; }
+
+        
+        public String apellido { get; set; }
+
+        
+        public DateTime fechanacimiento { get; set; }
+
+       
+        public int edad { get; set; }
+
+     
+        public String correo { get; set; }
+
       
+        public String contraseña { get; set; }
+
+       
+        public int rol { get; set; }
+
+        public String tipoVia { get; set; }
+
+        
+        public String numeroVia { get; set; }
+
+        
+        public String numeroViaSecundario { get; set; }
+
+        
+        public int numeroCasa { get; set; }
+
+       
+        public String tipoInmueble { get; set; }
+
+        public int numeroInmueble { get; set; }
+
+        public String ciudad { get; set; }
+
+        public String departamento { get; set; }
+
+        public String pais { get; set; }
+
 
     }
 }
