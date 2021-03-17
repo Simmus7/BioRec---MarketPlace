@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BioRec___MarketPlace.Migrations
 {
-    public partial class bd : Migration
+    public partial class db : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -77,31 +77,6 @@ namespace BioRec___MarketPlace.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Direccion",
-                columns: table => new
-                {
-                    idDireccion = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    tipoVia = table.Column<string>(nullable: false),
-                    numeroVia = table.Column<string>(nullable: false),
-                    numeroViaSecundario = table.Column<string>(nullable: false),
-                    numeroCasa = table.Column<int>(nullable: false),
-                    tipoInmueble = table.Column<string>(nullable: false),
-                    numeroInmueble = table.Column<int>(nullable: false),
-                    idCiudadDepPais = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Direccion", x => x.idDireccion);
-                    table.ForeignKey(
-                        name: "FK_Direccion_CiudadDepPais_idCiudadDepPais",
-                        column: x => x.idCiudadDepPais,
-                        principalTable: "CiudadDepPais",
-                        principalColumn: "idCiudadDepPais",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Proveedor",
                 columns: table => new
                 {
@@ -109,16 +84,21 @@ namespace BioRec___MarketPlace.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     nombreProveedor = table.Column<string>(nullable: false),
                     direccionBodega = table.Column<string>(nullable: false),
-                    idDireccion = table.Column<int>(nullable: false)
+                    tipoVia = table.Column<string>(nullable: false),
+                    numeroVia = table.Column<string>(nullable: false),
+                    numeroViaSecundario = table.Column<string>(nullable: false),
+                    numeroCasa = table.Column<int>(nullable: false),
+                    tipoInmueble = table.Column<string>(nullable: true),
+                    idCiudadDepPais = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Proveedor", x => x.idProveedor);
                     table.ForeignKey(
-                        name: "FK_Proveedor_Direccion_idDireccion",
-                        column: x => x.idDireccion,
-                        principalTable: "Direccion",
-                        principalColumn: "idDireccion",
+                        name: "FK_Proveedor_CiudadDepPais_idCiudadDepPais",
+                        column: x => x.idCiudadDepPais,
+                        principalTable: "CiudadDepPais",
+                        principalColumn: "idCiudadDepPais",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -135,16 +115,21 @@ namespace BioRec___MarketPlace.Migrations
                     correo = table.Column<string>(nullable: false),
                     contraseña = table.Column<string>(nullable: false),
                     rol = table.Column<int>(nullable: false),
-                    idDireccion = table.Column<int>(nullable: false)
+                    tipoVia = table.Column<string>(nullable: false),
+                    numeroVia = table.Column<string>(nullable: false),
+                    numeroViaSecundario = table.Column<string>(nullable: false),
+                    numeroCasa = table.Column<int>(nullable: false),
+                    tipoInmueble = table.Column<string>(nullable: true),
+                    idCiudadDepPais = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuario", x => x.idUsuario);
                     table.ForeignKey(
-                        name: "FK_Usuario_Direccion_idDireccion",
-                        column: x => x.idDireccion,
-                        principalTable: "Direccion",
-                        principalColumn: "idDireccion",
+                        name: "FK_Usuario_CiudadDepPais_idCiudadDepPais",
+                        column: x => x.idCiudadDepPais,
+                        principalTable: "CiudadDepPais",
+                        principalColumn: "idCiudadDepPais",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -258,12 +243,6 @@ namespace BioRec___MarketPlace.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Direccion_idCiudadDepPais",
-                table: "Direccion",
-                column: "idCiudadDepPais",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Producto_Venta_idProducto",
                 table: "Producto_Venta",
                 column: "idProducto");
@@ -274,9 +253,9 @@ namespace BioRec___MarketPlace.Migrations
                 column: "idVenta");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Proveedor_idDireccion",
+                name: "IX_Proveedor_idCiudadDepPais",
                 table: "Proveedor",
-                column: "idDireccion",
+                column: "idCiudadDepPais",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -296,9 +275,9 @@ namespace BioRec___MarketPlace.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuario_idDireccion",
+                name: "IX_Usuario_idCiudadDepPais",
                 table: "Usuario",
-                column: "idDireccion",
+                column: "idCiudadDepPais",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -329,9 +308,6 @@ namespace BioRec___MarketPlace.Migrations
 
             migrationBuilder.DropTable(
                 name: "Usuario");
-
-            migrationBuilder.DropTable(
-                name: "Direccion");
 
             migrationBuilder.DropTable(
                 name: "CiudadDepPais");

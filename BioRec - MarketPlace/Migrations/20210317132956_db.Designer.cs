@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BioRec___MarketPlace.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210316205304_bd")]
-    partial class bd
+    [Migration("20210317132956_db")]
+    partial class db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,45 +59,6 @@ namespace BioRec___MarketPlace.Migrations
                         .IsUnique();
 
                     b.ToTable("Departamento");
-                });
-
-            modelBuilder.Entity("BioRec___MarketPlace.Models.Direccion", b =>
-                {
-                    b.Property<int>("idDireccion")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("idCiudadDepPais")
-                        .HasColumnType("int");
-
-                    b.Property<int>("numeroCasa")
-                        .HasColumnType("int");
-
-                    b.Property<int>("numeroInmueble")
-                        .HasColumnType("int");
-
-                    b.Property<string>("numeroVia")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("numeroViaSecundario")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("tipoInmueble")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("tipoVia")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("idDireccion");
-
-                    b.HasIndex("idCiudadDepPais")
-                        .IsUnique();
-
-                    b.ToTable("Direccion");
                 });
 
             modelBuilder.Entity("BioRec___MarketPlace.Models.Pais", b =>
@@ -177,16 +138,34 @@ namespace BioRec___MarketPlace.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("idDireccion")
+                    b.Property<int>("idCiudadDepPais")
                         .HasColumnType("int");
 
                     b.Property<string>("nombreProveedor")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int>("numeroCasa")
+                        .HasColumnType("int");
+
+                    b.Property<string>("numeroVia")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("numeroViaSecundario")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("tipoInmueble")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("tipoVia")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.HasKey("idProveedor");
 
-                    b.HasIndex("idDireccion")
+                    b.HasIndex("idCiudadDepPais")
                         .IsUnique();
 
                     b.ToTable("Proveedor");
@@ -263,19 +242,37 @@ namespace BioRec___MarketPlace.Migrations
                     b.Property<DateTime>("fechanacimiento")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("idDireccion")
+                    b.Property<int>("idCiudadDepPais")
                         .HasColumnType("int");
 
                     b.Property<string>("nombre")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int>("numeroCasa")
+                        .HasColumnType("int");
+
+                    b.Property<string>("numeroVia")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("numeroViaSecundario")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<int>("rol")
                         .HasColumnType("int");
 
+                    b.Property<string>("tipoInmueble")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("tipoVia")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.HasKey("idUsuario");
 
-                    b.HasIndex("idDireccion")
+                    b.HasIndex("idCiudadDepPais")
                         .IsUnique();
 
                     b.ToTable("Usuario");
@@ -318,15 +315,6 @@ namespace BioRec___MarketPlace.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BioRec___MarketPlace.Models.Direccion", b =>
-                {
-                    b.HasOne("BioRec___MarketPlace.Models.CiudadDepPais", "CiudadDepPais")
-                        .WithOne("Direccion")
-                        .HasForeignKey("BioRec___MarketPlace.Models.Direccion", "idCiudadDepPais")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("BioRec___MarketPlace.Models.Producto_Venta", b =>
                 {
                     b.HasOne("BioRec___MarketPlace.Models.Producto", "Producto")
@@ -344,9 +332,9 @@ namespace BioRec___MarketPlace.Migrations
 
             modelBuilder.Entity("BioRec___MarketPlace.Models.Proveedor", b =>
                 {
-                    b.HasOne("BioRec___MarketPlace.Models.Direccion", "Direccion")
+                    b.HasOne("BioRec___MarketPlace.Models.CiudadDepPais", "CiudadDepPais")
                         .WithOne("Proveedor")
-                        .HasForeignKey("BioRec___MarketPlace.Models.Proveedor", "idDireccion")
+                        .HasForeignKey("BioRec___MarketPlace.Models.Proveedor", "idCiudadDepPais")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -377,9 +365,9 @@ namespace BioRec___MarketPlace.Migrations
 
             modelBuilder.Entity("BioRec___MarketPlace.Models.Usuario", b =>
                 {
-                    b.HasOne("BioRec___MarketPlace.Models.Direccion", "Direccion")
+                    b.HasOne("BioRec___MarketPlace.Models.CiudadDepPais", "CiudadDepPais")
                         .WithOne("Usuario")
-                        .HasForeignKey("BioRec___MarketPlace.Models.Usuario", "idDireccion")
+                        .HasForeignKey("BioRec___MarketPlace.Models.Usuario", "idCiudadDepPais")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

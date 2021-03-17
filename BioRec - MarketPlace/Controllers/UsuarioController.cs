@@ -42,12 +42,12 @@ namespace BioRec___MarketPlace.Controllers
                 user.fechanacimiento = usuarioCompuesto.fechanacimiento;
                 user.rol = 1;
 
-                Direccion dir = new Direccion();
-                dir.tipoVia = usuarioCompuesto.tipoVia;
-                dir.numeroVia = usuarioCompuesto.numeroVia;
-                dir.numeroViaSecundario = usuarioCompuesto.numeroViaSecundario;
-                dir.numeroCasa = usuarioCompuesto.numeroCasa;
-                dir.tipoInmueble = usuarioCompuesto.tipoInmueble;
+               
+                user.tipoVia = usuarioCompuesto.tipoVia;
+                user.numeroVia = usuarioCompuesto.numeroVia;
+                user.numeroViaSecundario = usuarioCompuesto.numeroViaSecundario;
+                user.numeroCasa = usuarioCompuesto.numeroCasa;
+                user.tipoInmueble = usuarioCompuesto.tipoInmueble;
 
                 CiudadDepPais ciudad = new CiudadDepPais();
                 ciudad.ciudad = usuarioCompuesto.ciudad;
@@ -70,14 +70,11 @@ namespace BioRec___MarketPlace.Controllers
 
                 _context.CiudadDepPais.Add(ciudad);
                 await _context.SaveChangesAsync();
-                dir.idCiudadDepPais = ciudad.idCiudadDepPais;
+                user.idCiudadDepPais = ciudad.idCiudadDepPais;
                 
-                _context.Direccion.Add(dir);
-                await _context.SaveChangesAsync();
-                user.idDireccion = dir.idDireccion;
-
                 _context.Usuario.Add(user);
                 await _context.SaveChangesAsync();
+               
 
                 return RedirectToAction("InicioDeSesion", "Usuario");
             }
