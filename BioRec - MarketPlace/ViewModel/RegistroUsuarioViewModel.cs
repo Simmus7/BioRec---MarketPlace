@@ -37,12 +37,12 @@ namespace BioRec___MarketPlace.ViewModel
         public String numeroViaSecundario { get; set; }
 
         
-        public int numeroCasa { get; set; }
+        public String numeroCasa { get; set; }
 
        
         public String tipoInmueble { get; set; }
 
-        public int numeroInmueble { get; set; }
+        public String numeroInmueble { get; set; }
 
         public String ciudad { get; set; }
 
