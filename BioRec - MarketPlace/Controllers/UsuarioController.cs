@@ -48,7 +48,7 @@ namespace BioRec___MarketPlace.Controllers
                 user.numeroViaSecundario = usuarioCompuesto.numeroViaSecundario;
                 user.numeroCasa = usuarioCompuesto.numeroCasa;
                 user.tipoInmueble = usuarioCompuesto.tipoInmueble;
-                user.tipoInmueble = usuarioCompuesto.numeroInmueble;
+                user.numeroInmueble = usuarioCompuesto.numeroInmueble;
 
                 CiudadDepPais ciudad = new CiudadDepPais();
                 ciudad.ciudad = usuarioCompuesto.ciudad;
