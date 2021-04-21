@@ -11,11 +11,10 @@ namespace BioRec___MarketPlace.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly DatabaseContext _context;
+        public HomeController(DatabaseContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult LandingPage()
@@ -26,6 +25,11 @@ namespace BioRec___MarketPlace.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+        public async Task<IActionResult> ListaProducto()
+        {
+            var listaPublicada = _context.ProductoPublicado.ToList();
+            return View(listaPublicada);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
