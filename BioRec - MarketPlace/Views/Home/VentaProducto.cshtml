@@ -1,0 +1,44 @@
+﻿@model BioRec___Empleados.Models.ProductoPublicado
+
+@{
+    ViewData["Title"] = "Registro de proveedor";
+}
+
+<div class="text-center">
+
+    <h1 class="display-1 titulo">Comprar producto @Model.nombre</h1>
+
+</div>
+<br />
+<br />
+
+<form asp-action="VentaProducto">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input name="idProductoPublicado" value="@Model.id" hidden/>
+    <div class="form-group row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            Cantidad Disponible : @Model.Producto.cantidadTotal
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <input name="cantidad" type="number" class="form-control" placeholder="Cantidad a comprar">
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+
+    <br />
+    <br />
+
+    <div class="form-group row">
+        <div class="col-12">
+            <div class="col text-center">
+                <input type="submit" value="Comprar" class="btn btn-info botonPred" style="width: 50%;">
+            </div>
+        </div>
+    </div>
+</form>
