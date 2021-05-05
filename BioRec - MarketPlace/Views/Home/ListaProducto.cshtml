@@ -5,7 +5,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Producto)
+                @Html.DisplayNameFor(model => model.Producto.cantidadTotal)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.nombre)
@@ -24,7 +24,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Producto.descripcion)
+                    @Html.DisplayFor(modelItem => item.Producto.cantidadTotal)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.nombre)
@@ -36,9 +36,7 @@
                     @Html.DisplayFor(modelItem => item.precio)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                    <a asp-action="VentaProducto" asp-route-idProductoPublicado="@item.id">Comprar</a>
                 </td>
             </tr>
         }
