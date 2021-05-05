@@ -11,10 +11,37 @@
 </div>
 <br />
 <br />
+@if (ViewBag.sw == 1)
+{
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>¡Cuidado!</strong> Se ha editado el cliente de manera exitosa.
+    </div>
+}
+else if (ViewBag.sw == 2)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>¡Alerta!</strong> Se ha eliminado el cliente de manera exitosa.
+    </div>
+}
+else if (ViewBag.sw == 3)
+{
+<div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>¡Alerta!</strong> No tenemos suficientes productos para realizar la venta.
+</div>
+}
+else if (ViewBag.sw == 4)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <strong>¡Alerta!</strong> Error desconocido, intente nuevamente.
+    </div>
+}
 
 <form asp-action="VentaProducto">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input name="idProductoPublicado" value="@Model.id" hidden/>
+    <input name="idProductoPublicado" value="@Model.id" hidden />
     <div class="form-group row">
         <div class="col-md-3">
         </div>
@@ -42,3 +69,20 @@
         </div>
     </div>
 </form>
+
+@section scripts{
+    <script type="text/javascript">
+        setTimeout(function () {
+            // Closing the alert
+            $(".alert-success").fadeTo(1500, 500).slideUp(500, function () {
+                $(".alert-success").slideUp(500);
+            });
+            $(".alert-warning").fadeTo(1500, 500).slideUp(500, function () {
+                $(".alert-warning").slideUp(500);
+            });
+            $(".alert-danger").fadeTo(1500, 500).slideUp(500, function () {
+                $(".alert-danger").slideUp(500);
+            });
+        }, 600);
+    </script>
+}

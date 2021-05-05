@@ -52,6 +52,7 @@ namespace BioRec___MarketPlace.Controllers
                     if (productoCompra.Producto.cantidadTotal < 0)
                     {
                         ViewBag.sw = 3;
+                        productoCompra.Producto.cantidadTotal += cantidad;
                         return View(productoCompra);
                     }
                     _context.Update(productoCompra.Producto);
