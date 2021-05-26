@@ -1,20 +1,22 @@
 ﻿@using BioRec___Empleados.Models;
 @model IEnumerable<ProductoPublicado>
 
+<h1>Productos disponibles</h1>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Producto.cantidadTotal)
+                Cantidad disponible
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.nombre)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.descripcion)
+                Descripción
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.precio)
+                Precio
             </th>
             <th></th>
         </tr>
