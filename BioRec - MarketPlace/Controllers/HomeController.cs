@@ -73,7 +73,7 @@ namespace BioRec___MarketPlace.Controllers
                     _context.Add(productoVenta);
                     _context.SaveChanges();
 
-                    return View("ListaProducto");
+                    return RedirectToAction("ListaProducto");
                 }
             }
             catch (Exception e)
